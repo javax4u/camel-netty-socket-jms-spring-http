@@ -1,0 +1,2 @@
+cd release
+RunAsProgrammeClient.bat
