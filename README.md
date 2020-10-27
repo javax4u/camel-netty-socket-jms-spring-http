@@ -32,17 +32,28 @@ org.apache.camel.ResolveEndpointFailedException: Failed to resolve endpoint: min
 	
 	Solution:add mina dependency in classpath
 
-### Server name and port numbers are hard coded in this project how can externalize it.
+#### Q.Server name and port numbers are hard coded in this project how can externalize it.
 	In next project you we will look into it.
 	
-### You have not configured connection pool for activemq to improve performance
+#### Q.You have not configured connection pool for activemq to improve performance
 	In next project you we will look into it.
 	
-### How can i install it as service?
+#### Q. How can i install it as service?
 	open cmd and goto release folder.
 	change path according to your computer
 	E:\camel-socket\release>InstallAsWindowsService.bat
 
+#### Q.Does it required Activemq before installation as well as netbeans ? 
+	Ans: It requires activemq only does not require netbeans or .net
+
+#### Q. How  can i know activemq status, It is running or not?
+	Ans: brwose http://localhost:8161/
+	with user_name=admin password=admin
+	if it shows no page than go to services of windows and search for ActiveMQ
+	if it's there then start it otherwise download it from google
+#### Q. What is the use of camel in this project ?
+	Camel connects different componet of your project. Socket to JMS to http
+	
 ### Flow Diagram
 [Online Editor Link used to genrate below diagram with mermaid](https://mermaid-js.github.io/mermaid-live-editor)
 ```
@@ -50,18 +61,21 @@ graph LR
   1[1] --> 2{2}
   2 --> 2.1[2.1]
   2 --> 2.2[2.2]
-
+	
+graph LR
   K[socket] --> M{to}
   M --> N1[JMS]
   M --> N2[LOG]
 
-  A[A. Socket:4929] -->|from netty| B{B. to}
+graph LR
+  X((computer)) 
+  A((A. Socket:4929)) -->|from netty| B{B. to}
   B -->|log| C{C. log4j2}
-  B -->|jms| D[D. AtiveMQ]
+  B -->|jms| D((D. AtiveMQ))
   C -->|RollingfileAppender| E[E. application.log]
   C -->|log|F[F. Console]
-```
-```
+  D -->|POST| G((G. http))
+
 graph LR
 	A[jmsConnectionFactory] --> B(pooledConnectionFactory)
 	B --> C1[JmsComponent]
