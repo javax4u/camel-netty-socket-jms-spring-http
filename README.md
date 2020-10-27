@@ -82,9 +82,19 @@ graph LR
 	C1 --> D{CamelContext}
 	C2[SocketToJmsRoute] --> D
 	C3[JmsToHttpRoute] --> D
+	
+sequenceDiagram
+  (~/\~) -->> Computer A: port_no:socket
+  Computer A -->> Computer B: port_no:jms:ActiveMQ 
+  Computer B -->> Computer A: port_no:jms:ActiveMQ 
+  Computer A -->> Computer C: port_no:http:POST
+	
 ```
 ### Flow Diagram
 ![Flow Diagram](image/flow_diagram.png)
 
 ### Object Diagram
 ![Object Diagram](image/object_diagram.png)
+
+### Sequence Diagram
+![Sequence Diagram](image/sequence_diagram.png)
