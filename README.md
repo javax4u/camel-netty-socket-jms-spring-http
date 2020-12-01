@@ -98,3 +98,8 @@ sequenceDiagram
 
 ### Sequence Diagram
 ![Sequence Diagram](image/sequence_diagram.png)
+
+### sl4j comparison with java.util.logging
+![logging](image/logging.jpg)
+
+
